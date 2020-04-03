@@ -1,24 +1,50 @@
-import tkinter as tk
-from tkinter.messagebox import showwarning
-import subprocess
+from tkinter import *
+import tkinter.font as TkFont
+import os
+import time
 
-root = tk.Tk()
-root.geometry("600x500")
+root = Tk()
+root.title("Szkielet Boga")
+root.geometry("500x200")
 
-label = tk.Label(root, text="Example of xterm embedded in frame")
-label.pack(fill=tk.X)
+dFont=TkFont.Font(family="Arial", size=12)
+#dFont=TkFont.Font(family="Verdana", size=12)
 
-xterm_frame = tk.Frame(root)
-xterm_frame.pack(fill=tk.BOTH, expand=True)
+f = Frame()
+f.pack(side=TOP, fill=BOTH, expand = 1)
 
-xterm_frame_id = xterm_frame.winfo_id()
+text1 = Text(f, height=1, width=50, font=dFont, background="#000000", foreground="#00ff00", state="disabled", cursor="arrow")
+text1.pack(side=LEFT, fill=BOTH, expand = 1)
 
-try:
-    p = subprocess.Popen(
-        ["xterm", "-into", str(xterm_frame_id), "-geometry", "80x20"],
-        stdin=subprocess.PIPE, stdout=subprocess.PIPE)
-except FileNotFoundError:
-    showwarning("Error", "xterm is not installed")
-    raise SystemExit
+yscrollbar=Scrollbar(f, orient=VERTICAL, command=text1.yview, bg="black", activebackground="#313131")
+yscrollbar.pack(side=LEFT, fill=Y, expand = 0)
+text1["yscrollcommand"]=yscrollbar.set
 
+v = StringVar()
+entry = Entry(root, textvariable=v, font=dFont, background="#000000", foreground="#00ff00")
+entry.pack(side=TOP ,fill=X, expand = 0)
+
+
+def say(x):
+    text1.config(state="normal")
+    text1.insert(INSERT,  "\n" + str(x))
+    text1.config(state="disabled")
+
+    text1.see(END)
+    text1.edit_modified(0)
+
+def loop():
+
+    #say("{}".format(time.time()))
+
+    root.after(2000, loop)  # reschedule event in 2 seconds
+
+
+def send(event=None):
+    say(v.get())
+    v.set("")
+
+root.bind('<Return>', send)
+
+root.after(2000, loop)
 root.mainloop()
