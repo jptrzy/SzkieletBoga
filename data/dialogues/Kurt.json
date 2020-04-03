@@ -18,7 +18,7 @@
     {
       "text" : "(Odejdz)",
       "com" : "exit",
-      "var" : null
+      "var" : "Odszedłęś od Kurta"
     }
   ]
 },
@@ -30,13 +30,13 @@
   "responses":[
     {
       "text" : "Dobra to ja iddę.",
-      "com" : "dia",
-      "var" : 1002
+      "com" : "exit",
+      "var" : "Odszedłęś od Kurta"
     },
     {
       "text" : "(Odejdz)",
       "com" : "exit",
-      "var" : null
+      "var" : "Odszedłęś od Kurta"
     }
   ]
 },
@@ -48,7 +48,8 @@
   "responses":[
     {
       "text" : "Nic",
-      "com" : "exit"
+      "com" : "exit",
+      "var" : "Odszedłęś od Kurta"
     }
   ]
 }

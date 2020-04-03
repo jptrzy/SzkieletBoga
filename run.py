@@ -15,14 +15,18 @@ default_fg = default_colors & 0x0007
 def inp():
     return(input())
 
-def say(x):
-    cons.set_text_attr(cons.FOREGROUND_GREEN | default_bg |
-                     cons.FOREGROUND_INTENSITY)
-    print(x)
+def say(x, col=cons.FOREGROUND_GREEN):
+    cons.set_text_attr(col | default_bg | cons.FOREGROUND_INTENSITY)
+    print(str(x))
     cons.set_text_attr(default_colors)
 
+def ERROR(x):
+    say(x, cons.FOREGROUND_RED)
+
+global run
 run = 1
 
+ti = 0
 day = 0
 
 global dialogueJson
@@ -31,7 +35,7 @@ dialogueJson = {}
 global des
 global dialogues
 des = ""
-dialogues = []
+dialogues = {}
 
 ##Loads
 
@@ -39,17 +43,13 @@ def loadDialoguesJson():
     global dialogueJson
     dialogueJson = {}
     for x in os.listdir("data/dialogues/"):
-        print(x)
         dialogueJson.update( J.load(codecs.open('data/dialogues/'+str(x), 'r', 'utf-8-sig')) )
-    print(dialogueJson)
-
 
 def loadRoad():
     global des
     global dialogues
     data = J.load(codecs.open('data/road/'+str(day)+'.json', 'r', 'utf-8-sig'))
     des = data["des"]
-    print(des)
     dialogues = data["dialogues"]
 
 ##Commands
@@ -59,7 +59,40 @@ def lookAroudn(args):
     return(0)
 
 def dialogue(id):
-    data = dialogueJson
+    global run
+    global dialogueJson
+    try:
+        data = dialogueJson[str(id)]
+    except:
+        ERROR("ID {} not found in {}".format(id, dialogueJson))
+        return(1)
+    for i in data['messages']:
+        say(i)
+        if(data['messages'][-1] != i):
+            say(data['messages'][-1])
+            say(i)
+            inp()
+    for i, ii in enumerate(data['responses']):
+        say( "{} {}".format(i+1, ii["text"]) )
+
+    while(run):
+        i = inp()
+        try:
+            i = int(i)-1
+            if(i >= 0 and len(data['responses']) > i):
+                ##say(data['responses'][i]['text'])
+                if(data['responses'][i].get("com") == None or data['responses'][i]['com'] == "exit"):
+                    say(data['responses'][i]['var'])
+                    return(0)
+                elif(data['responses'][i]['com'] == "dia"):
+                    dialogue(data['responses'][i]['var'])
+                    return(0)
+                else:
+                    print("Nie znana komenda {}".format(data['responses'][i]['com']))
+                    return(0)
+
+        except:
+            say( "{} to nie jest liczba. Podaj liczbę w przedziale od 1 do {}".format(i, len(data['responses']) ) )
 
 
 
@@ -68,6 +101,9 @@ def dialogue(id):
     return(0)
 
 def cDialogue(args):
+    global dialogues
+    if(args[1] in dialogues):
+        dialogue(dialogues[ str( args[1] ) ])
     return(0)
 
 commands ={
@@ -80,10 +116,12 @@ commands ={
 data = J.load(codecs.open('data/errorCommands.json', 'r', 'utf-8-sig'))
 errorCommandsList = data["texts"]
 
-
-
-
-dialogue(1001)
+'''
+for i in range(0x0000, 0x0008):
+    say(i,
+    default_colors & i
+    )
+'''
 
 loadDialoguesJson()
 
@@ -92,11 +130,12 @@ loadRoad()
 while(run):
     ##Road Segment
 
+    say("[{} dzień ]".format(day + 1, ["przed południem", "południe", "po południu"][ti]))
+
     co = inp()
     col = co.split()
 
     if(col[0] in commands):
-        print(0)
         commands[col[0]](col)
     else:
         say(R.choice(errorCommandsList).format(co))

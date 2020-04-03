@@ -8,7 +8,7 @@
   "responses":[
     {
       "text":"(Odejdz)",
-      "com":"exit"
+      "var" : "Odszedłęś od Celiny"
     }
   ]
 }
