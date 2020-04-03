@@ -101,6 +101,10 @@ def dialogue(id):
     return(0)
 
 def cDialogue(args):
+    if(len(args)):
+        say("Zapomniałeś chyba podać imienia rozmuwcy.")
+        return(0)
+
     global dialogues
     if(args[1] in dialogues):
         dialogue(dialogues[ str( args[1] ) ])
