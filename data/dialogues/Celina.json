@@ -1,0 +1,16 @@
+{
+
+"2000":{
+  "id":2000,
+  "messages":[
+    "..."
+  ],
+  "responses":[
+    {
+      "text":"(Odejdz)",
+      "com":"exit"
+    }
+  ]
+}
+
+}

@@ -1,0 +1,18 @@
+{
+
+"1001":{
+  "id":1001,
+  "messages":[
+    "..."
+  ],
+  "responses":[
+    {
+      "text" : "Witaj"
+    },
+    {
+      "text" : "Żegnaj"
+    }
+  ]
+}
+
+}

@@ -1,0 +1,56 @@
+{
+
+"1000":{
+  "messages":[
+    "Co tam?"
+  ],
+  "responses":[
+    {
+      "text" : "Wszystko dobrze. Droga jest czysta. Choć trochę niepokojąca.",
+      "com" : "dia",
+      "var" : 1001
+    },
+    {
+      "text" : "Nic ciekawego.",
+      "com" : "dia",
+      "var" : 1002
+    },
+    {
+      "text" : "(Odejdz)",
+      "com" : "exit",
+      "var" : null
+    }
+  ]
+},
+
+"1001":{
+  "messages":[
+    "Rozumiem twoje przeczucie, lecz niestety nie mamy innego wyjścia. To jest jedyna froga, aby tam dojść."
+  ],
+  "responses":[
+    {
+      "text" : "Dobra to ja iddę.",
+      "com" : "dia",
+      "var" : 1002
+    },
+    {
+      "text" : "(Odejdz)",
+      "com" : "exit",
+      "var" : null
+    }
+  ]
+},
+
+"1002":{
+  "messages":[
+    "Muwiąc szczerze spodziewałęm się po tobie owiele więcej. Znam ciebie od dłuższego czasu co się stało."
+  ],
+  "responses":[
+    {
+      "text" : "Nic",
+      "com" : "exit"
+    }
+  ]
+}
+
+}
