@@ -1,57 +1,31 @@
 {
 
-"1000":{
-  "messages":[
-    "Co tam?"
-  ],
-  "responses":[
-    {
-      "text" : "Wszystko dobrze. Droga jest czysta. Choć trochę niepokojąca.",
-      "com" : "dia",
-      "var" : 1001
-    },
-    {
-      "text" : "Nic ciekawego.",
-      "com" : "dia",
-      "var" : 1002
-    },
-    {
-      "text" : "(Odejdz)",
-      "com" : "exit",
-      "var" : "Odszedłęś od Kurta"
-    }
-  ]
-},
+  "1000":{
+    "messages":[
+      "&7Co tam?&0 Pyta się Berthold szybko przy tym kończąc wędząkę.&7"
+    ],
+    "responses":[
+      {"text" : "Najlepeij. Już od dawna nie jadłem tak sytego posiłku.",
+        "com" : "dia",
+        "var" : 1001},
+      {"text" : "(Odejdz)",
+        "com" : "exit",
+        "var" : ""}
+    ]
+  },
 
-"1001":{
-  "messages":[
-    "Rozumiem twoje przeczucie, lecz niestety nie mamy innego wyjścia. To jest jedyna froga, aby tam dojść."
-  ],
-  "responses":[
-    {
-      "text" : "Dobra to ja iddę.",
-      "com" : "exit",
-      "var" : "Odszedłęś od Kurta"
-    },
-    {
-      "text" : "(Odejdz)",
-      "com" : "exit",
-      "var" : "Odszedłęś od Kurta"
+  "1001":{
+    "messages":[
+      "&0Twój przyjaciel uśmiecha się przy tym przełykając ostatnią wędząnkę. &7Ja takżę. Patrząc na to wszystko, to przez te nieszczęście ostatecznie na razie wychodzimy na plus. &0Jego głos nagle blaknie. &7Gdyby tylko innym udało się tu dotrzeć. Morze miej ich w opiece."
+    ],
+    "responses":[
+      {"text" : "Najlepeij. Już od dawna nie jadłem tak sytego posiłku.",
+        "com" : "dia",
+        "var" : 1001},
+      {"text" : "(Odejdz)",
+        "com" : "exit",
+        "var" : ""}
+    ]
     }
-  ]
-},
-
-"1002":{
-  "messages":[
-    "Muwiąc szczerze spodziewałęm się po tobie owiele więcej. Znam ciebie od dłuższego czasu co się stało."
-  ],
-  "responses":[
-    {
-      "text" : "Nic",
-      "com" : "exit",
-      "var" : "Odszedłęś od Kurta"
-    }
-  ]
-}
 
 }

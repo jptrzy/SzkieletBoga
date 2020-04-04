@@ -1,0 +1,8 @@
+{
+  "startDes":"Jest was sześciu. Oczywiście ty i twój kompan, którzy bez skrupułów porzuciliście swego dotychczasowego chlebodawce. Także w Celinie, lokalnej łowczyni w porę odezwał się instynkt zachowawczy i dzięki temu macie jakieś szanse na przetrwanie w tych dzikich ostępach. Jeszcze macie ze sobą dwóch katechetów - a raczej jedną katechetkę Alfridę i jednego katechetę, Heinza. Wiecie, że Alfrida służy Młotodzierżcy, ale za cholerę nie pamiętacie kogo wyznawcą jest Heinz. A, i eskortowany - niejaki Konrad, paser, który obiecał, że jeśli odeskortujecie go do Nuln odwdzięczy się wam sowitym wynagrodzeniem. Jako że ty i twój przyjaciel jesteście najemnikami to nie pogardziliście tą propozycją, choć mieszczanin wyglądał na dość rotrzęsionego. Ale czy powinniście się dziwić? Raczej bylibyście w podobnym nastoju, gdyby wasz sklep z całą wioską został zrównany z ziemią przez zbrojne stado, nie oszczędzają nikogo na swej drodze. Dlatego właśnie wasza szóstka ucieka. Jak najdalej od tego miejsca, jak najszybciej do cywilizacji. Jak najprędzej daleko od mutantów i szaleństwa, jakie spadło na waszą wioskę, nie z waszej winy.",
+  "des":"Przejeżdzacie przez wręcz czarny las. Gałęzie jego pochylają się nad wami oddcinając światło księżycówm. Było by to idealne miejsce na zasadzkę, gdy byś tylko już nie był żołnierzm. Razem z tobą idzie Celina. Wozem zaś prowadzi Kurt.",
+  "dialogues":{
+    "Kurt":1000,
+    "Celina":2000
+  }
+}

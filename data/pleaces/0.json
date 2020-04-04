@@ -1,0 +1,13 @@
+{
+  "startDes":"Jest was sześciu. Oczywiście ty i twój kompan, którzy bez skrupułów porzuciliście swego dotychczasowego chlebodawce. Także w Celinie, lokalnej łowczyni w porę odezwał się instynkt zachowawczy i dzięki temu macie jakieś szanse na przetrwanie w tych dzikich ostępach. Jeszcze macie ze sobą dwóch katechetów - a raczej jedną katechetkę Alfridę i jednego katechetę, Heinza. Wiecie, że Alfrida służy Młotodzierżcy, ale za cholerę nie pamiętacie kogo wyznawcą jest Heinz. A, i eskortowany - niejaki Konrad, paser, który obiecał, że jeśli odeskortujecie go do Nuln odwdzięczy się wam sowitym wynagrodzeniem. Jako że ty i twój przyjaciel jesteście najemnikami to nie pogardziliście tą propozycją, choć mieszczanin wyglądał na dość rotrzęsionego. Ale czy powinniście się dziwić? Raczej bylibyście w podobnym nastoju, gdyby wasz sklep z całą wioską został zrównany z ziemią przez zbrojne stado, nie oszczędzają nikogo na swej drodze. Dlatego właśnie wasza szóstka ucieka. Jak najdalej od tego miejsca, jak najszybciej do cywilizacji. Jak najprędzej daleko od mutantów i szaleństwa, jakie spadło na waszą wioskę, nie z waszej winy. \n Na całe szczęście Celina szybko zaprowadziła was do nawet nie najgorszego miejsca na kryjówkę. Chatę wypadową, czyli praktycznie jej drugiego domu. Szybko się tam urządziliście. Ba, było tam nawet jedno piętro, co pozwoliło wam w miarę wygodnie rozłożyć na obu podłogach. W dodatku twój przyjaciel, Berthold, zwinął spory zapas jedzenia, w którym znalazły się takie frykasy jak jajka, wędzone mięso, a nawet miód pitny. Teraz zaś siedzicie przy syto zastawionym stole rozmawiając o tym co robią i czego nie, po prostu biesiadują.",
+  "des":"",
+  "commands":
+  [
+    "talk",
+    "look"
+  ],
+  "dialogues":{
+    "Kurt": 1000
+  }
+
+}

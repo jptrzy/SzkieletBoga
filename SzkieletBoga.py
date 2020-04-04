@@ -1,63 +1,76 @@
 #!/usr/bin/python
 #-*- coding: utf-8 -*-
 import random as R
-import color_console as cons
+from graphic import *
 import json as J
 import os
 import time
 import codecs
 import sys
 
-default_colors = cons.get_text_attr()
-default_bg = default_colors & 0x0070
-default_fg = default_colors & 0x0007
-
-def inp():
-    return(input())
-
-def say(x, col=cons.FOREGROUND_GREEN):
-    cons.set_text_attr(col | default_bg | cons.FOREGROUND_INTENSITY)
-    print(str(x))
-    cons.set_text_attr(default_colors)
-
-def ERROR(x):
-    say(x, cons.FOREGROUND_RED)
-
 global run
 run = 1
+runRoad = 1
 
-ti = 0
-day = 0
+
+chapter = 0
+
+global textJson
+textJson = {}
 
 global dialogueJson
 dialogueJson = {}
+global availableDialogues
+availableDialogues = {}
 
-global des
-global dialogues
-des = ""
-dialogues = {}
+global pleace
+
+global commands
+global commandsCalls
+global activCommandsCalls
 
 ##Loads
+
+def loadCommandCallsList():
+    global commandsCalls
+    global activCommandsCalls
+    commandsCalls = {}
+    activCommandsCalls = {}
+    for i in commands:
+        for ii in i["calls"]:
+            commandsCalls[ii] = i["func"]
+            if(i.get("act")) :
+                activCommandsCalls[ii] = i["func"]
+    return(0)
 
 def loadDialoguesJson():
     global dialogueJson
     dialogueJson = {}
     for x in os.listdir("data/dialogues/"):
         dialogueJson.update( J.load(codecs.open('data/dialogues/'+str(x), 'r', 'utf-8-sig')) )
-
-def loadRoad():
-    global des
-    global dialogues
-    data = J.load(codecs.open('data/road/'+str(day)+'.json', 'r', 'utf-8-sig'))
-    des = data["des"]
-    dialogues = data["dialogues"]
-
-##Commands
-
-def lookAroudn(args):
-    say(des)
     return(0)
 
+def loadPleace():
+    global pleace
+    global availableDialogues
+    data = J.load(codecs.open('data/pleaces/'+str(chapter)+'.json', 'r', 'utf-8-sig'))
+    pleace = data
+
+    say(data.get("startDes"))
+
+    for i in commands:
+        if(i["name"] in data["commands"] or i["name"] in ["help","exit"]):
+            i["act"] = True
+        else:
+            i["act"] = False
+    availableDialogues = data.get("dialogues")
+    if(availableDialogues == None):
+        availableDialogues = {}
+    return(0)
+
+
+
+##Commands
 def dialogue(id):
     global run
     global dialogueJson
@@ -74,7 +87,6 @@ def dialogue(id):
             inp()
     for i, ii in enumerate(data['responses']):
         say( "{} {}".format(i+1, ii["text"]) )
-
     while(run):
         i = inp()
         try:
@@ -90,62 +102,109 @@ def dialogue(id):
                 else:
                     print("Nie znana komenda {}".format(data['responses'][i]['com']))
                     return(0)
-
         except:
             say( "{} to nie jest liczba. Podaj liczbę w przedziale od 1 do {}".format(i, len(data['responses']) ) )
-
-
-
-
-
     return(0)
 
-def cDialogue(args):
-    if(len(args)):
+def cTalk(args):
+    if(len(args) == 1):
         say("Zapomniałeś chyba podać imienia rozmuwcy.")
         return(0)
 
-    global dialogues
-    if(args[1] in dialogues):
-        dialogue(dialogues[ str( args[1] ) ])
+    global availableDialogues
+    print(args[1] in availableDialogues)
+    print(availableDialogues)
+    print(args[1])
+    if(args[1] in availableDialogues):
+        dialogue(availableDialogues[ str( args[1] ) ])
+    else:
+        say("Nie ma tutaj kogoś takiego jak \"{}\".".format(args[1]))
     return(0)
 
-commands ={
-"rozejrzyj":lookAroudn,
-"rozmawiaj":cDialogue
-}
+def cLook(args):
+    say(des)
+    return(0)
 
-##LOADING JSONS
+def cHelp(args):
+    if(0 == (len(args) > 1 and args[1] == "wszystkie")):
+        say("&0Poniżej wyświetlone komendy są jedynie na tę chwilę możliwymi do wykonania komendami. Jeżeli za to chcesz poznać je wszystki wpisz \"pomoc wszystkie\" w lini poleceń.&7 ")
+    global commands
+    for i in commands:
+        if(i.get("act") or ( len(args) > 1 and args[1] == "wszystkie" )):
+            say( "{}   {}".format(i.get("sample"), i.get("des")) )
 
-data = J.load(codecs.open('data/errorCommands.json', 'r', 'utf-8-sig'))
-errorCommandsList = data["texts"]
 
-'''
-for i in range(0x0000, 0x0008):
-    say(i,
-    default_colors & i
-    )
-'''
+    return(0)
+
+def cExit(args):
+    exit()
+    return(0)
+
+
+commands =[
+    {"name":"drink",
+    "calls":["napij","Napij"],
+    "func":None
+    },
+    {"name":"",
+    "calls":[],
+    "func":None
+    },
+    {"name":"",
+    "calls":[],
+    "func":None
+    },
+    {"name":"talk",
+    "sample":"rozmawiaj &2<&7osoba&2>&7",
+    "des":"służy do rozmawiania z kimś",
+    "calls":["rozmawiaj", "Rozmawiaj", "porozmawiaj", "Porozmawiaj"],
+    "func":cTalk
+    },
+    {"name":"look",
+    "sample":"rozejrzyj",
+    "des":"pozwola tobie zobaczyć gdzie jesteś oraz co widzisz",
+    "calls":["rozejrzyj","Rozejrzyj"],
+    "func":cLook
+    },
+    {"name":"",
+    "calls":[],
+    "func":None
+    },
+    {"name":"help",
+    "sample":"pomoc",
+    "des":"pokazuje wszyskie dostępne komendy",
+    "calls":["pomoc","Pomoc","pomocy","Pomocy","?"],
+    "func":cHelp
+    },
+    {"name":"exit",
+    "sample":"wyjdz",
+    "des":"wyłancza grę bez zapisywania jej",
+    "calls":["wyjdz", "wyjście", "Wyjdz", "Wyjście", "zamknij", "Zamknij", "wyjscie", "Wyjscie"],
+    "func":cExit
+    }
+]
+
+commandsCalls = {}
+activCommandsCalls = {}
+
+##LOADING Text JSONS
+textJson = J.load(codecs.open('data/text/Pl.json', 'r', 'utf-8-sig'))
+
+say(textJson["introduction"])
 
 loadDialoguesJson()
-
-loadRoad()
-
+loadPleace()
+loadCommandCallsList()
 while(run):
-    ##Road Segment
-
-    say("[{} dzień ]".format(day + 1, ["przed południem", "południe", "po południu"][ti]))
+    say("&2[&7Rozdział &6{}&2]&7".format(chapter))
 
     co = inp()
     col = co.split()
 
-    if(col[0] in commands):
-        commands[col[0]](col)
+    if(col[0] in commandsCalls):
+        if(col[0] in activCommandsCalls):
+            commandsCalls[col[0]](col)
+        else:
+            say(textJson["noActiveCommandUse"])
     else:
-        say(R.choice(errorCommandsList).format(co))
-
-    ##Rest Segment
-
-    ##Dream Segment
-
-    ##Dawn Segment
+        say(R.choice(textJson["errorCommandMessageList"]).format(co))
