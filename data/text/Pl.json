@@ -1,5 +1,5 @@
 {
-  "introduction":"&0SzkeletBoga jest grą tekstową, nie posiada grafiki lecz jedynie sam tekst. Akcje w niej będziesz wykonywał poprzez wpisywanie koment. Wpisz \"pomoc wszystkie\" i wcisznij Enter, aby zobaczyć je wszystkie. &7",
+  "introduction":"&0SzkeletBoga jest grą tekstową, nie posiada grafiki lecz jedynie sam tekst. Akcje w niej będziesz wykonywał poprzez wpisywanie koment. Wpisz \"pomoc wszystkie\" i wcisznij Enter, aby zobaczyć je wszystkie. &7\n",
   "errorCommandMessageList":[
     "Nie rozumiem ciebie mugłbyś powturzyć.",
     "Taka komenda nie istnieje, aby je poznać napisz \"pomoc\".",

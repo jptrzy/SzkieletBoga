@@ -79,12 +79,9 @@ def dialogue(id):
     except:
         ERROR("ID {} not found in {}".format(id, dialogueJson))
         return(1)
-    for i in data['messages']:
-        say(i)
-        if(data['messages'][-1] != i):
-            say(data['messages'][-1])
-            say(i)
-            inp()
+
+    say(data['messages'])
+
     for i, ii in enumerate(data['responses']):
         say( "{} {}".format(i+1, ii["text"]) )
     while(run):
@@ -99,8 +96,11 @@ def dialogue(id):
                 elif(data['responses'][i]['com'] == "dia"):
                     dialogue(data['responses'][i]['var'])
                     return(0)
+                elif(data['responses'][i]['com'] == "sDia"):
+                    availableDialogues[data['responses'][i]['var'][0]] = data['responses'][i]['var'][1]
+                    return(0)
                 else:
-                    print("Nie znana komenda {}".format(data['responses'][i]['com']))
+                    say("Nie znana komenda {}".format(data['responses'][i]['com']))
                     return(0)
         except:
             say( "{} to nie jest liczba. Podaj liczbę w przedziale od 1 do {}".format(i, len(data['responses']) ) )
@@ -112,10 +112,8 @@ def cTalk(args):
         return(0)
 
     global availableDialogues
-    print(args[1] in availableDialogues)
-    print(availableDialogues)
-    print(args[1])
     if(args[1] in availableDialogues):
+        
         dialogue(availableDialogues[ str( args[1] ) ])
     else:
         say("Nie ma tutaj kogoś takiego jak \"{}\".".format(args[1]))
