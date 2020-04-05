@@ -1,6 +1,3 @@
-
-
-
 import os, struct
 system = 0
 
@@ -52,7 +49,7 @@ def say(x):
         data = xx.split()
         str = ""
         for i in data:
-            if( len(str) + len(i) > columns):
+            if( len(str) + len(i) + 1 > columns):
                 colSay(str)
                 str = i + " "
             else:
@@ -77,3 +74,6 @@ def inp():
 
 def ERROR(x):
     say("&4{}".format(x))
+
+def WAR(x):
+    say("&6 !!! {} !!! ".format(x))

@@ -1,0 +1,56 @@
+{
+
+
+
+  "6000":{
+    "messages":"&0Widzisz Heinza przygotowującego stos ofiarny&7 Coś się stało?",
+    "responses":[
+      {
+        "text" : "Co się stanie z ciałem Bertholda?",
+        "exec" : "d(6001)"
+      },
+      {
+        "text" : "",
+        "exec" : "d(6003)"
+      },
+      {
+        "text" : "Nic. &0Odejdź &7",
+        "exec" : ""
+      }
+    ]
+  },
+  "6001":{
+    "messages":"Zostanie spalone według starych obrzędów.",
+    "responses":[
+      {
+        "text" : "Tak pytając z ciekawości co robiliście w tamtym mieście.",
+        "exec" : "d(6001)"
+      },
+      {
+        "text" : "Nic. &0Odejdź &7",
+        "exec" : ""
+      }
+    ]
+  },
+  "6002":{
+    "messages":"Była tam świątynia w której służyłem. Za to Celina po prostu tam mieszkała tak samo jak Kurt. Gdyby tylko nie ci zwierzo ludzie wszystko było by w normie. &0Spogląda na stos.&7 Wiesz co nie mam teraz zbyt dużo czasu muszę to dokończyć.",
+    "responses":[
+      {
+        "text" : "To ja już nie będę przeszkadzać. &0Odejdź &7",
+        "exec" : "availableDialogues[\"Heinz\"]=6003\nVARIBLES[\"diaHeinz\"]=6003"
+      }
+    ]
+  },
+  "6003":{
+    "messages":"&0Kapłan siedzi na stosem. Nie powinienem mu przeszkadzać.",
+    "responses":[
+      {
+        "text" : "&0Odejdź &7",
+        "exec" : "availableDialogues[\"Heinz\"]=6003\nVARIBLES[\"diaHeinz\"]=6003"
+      }
+    ]
+  }
+
+
+
+}

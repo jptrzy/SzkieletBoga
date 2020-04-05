@@ -1,0 +1,59 @@
+{
+  "4000":{
+    "messages":"&0Kapłanka oprawia ostatnie modły nad zmarłym.&7",
+    "responses":[
+      {
+        "text":"Jak myślisz co mogło tak pokiereszować Bertholda?",
+        "exec":"d(4001)"
+      },
+      {
+        "text":"Czy istoty o talencie magicznym, nawet nieokiełznanym, mogą widzieć duchy ?",
+        "exec":"d(4002)"
+      },
+      {
+        "text":"&0Odejdź&7",
+        "exec":""
+      }
+    ]
+  },
+
+  "4001":{
+    "messages":"Nie znam się na tym trzeba było by się dopytać &2Celiny&7. &0Po czym zerka na nią. &7Lecz chyba było to coś magicznego. &0Zastanawia się chwilę po czym kontynułuje. &7W nocy czułam dziwne wahania dzikej magii. Chmm Ciekawe jak dobrze pamiętam &6Kurt&7 chyba miał jakiś problem z swoim magicznym talentem.",
+    "responses":[
+      {
+        "text":"Czy istoty o talencie magicznym, nawet nieokiełznanym, mogą widzieć duchy ?",
+        "exec":"d(4002)"
+      },
+      {
+        "text":"&0Odejdź&7",
+        "exec":""
+      }
+    ]
+  },
+  "4002":{
+    "messages":"Tak oczywiście, a dla czego pytasz?",
+    "responses":[
+      {
+        "text":"ERROR",
+        "exec":"d(4004)"
+      },
+      {
+        "text":"Pytam jedynie z czystej ciekawości.",
+        "exec":"d(4003)"
+      }
+    ]
+  },
+
+  "4003":{
+    "messages":"Czy jeszcze mazsz jakieś pytanie z \"Czysetej ciekawości\"?",
+    "responses":[
+      {
+        "text":"Nie &0Odejdź&7",
+        "exec":"availableDialogues[\"Alfrida\"]=4003\nVARIBLES[\"diaAlfrida\"]=4003"
+      }
+    ]
+  }
+
+
+
+}

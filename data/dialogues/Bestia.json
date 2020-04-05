@@ -1,0 +1,37 @@
+{
+  "3000":{
+    "messages":"&0 Potwór patrzy się na ciebie w bezruchu swym pustymi ślepiami.&7",
+    "responses":[
+      {
+        "text":"&0Poczkaj&7",
+        "exec":"d(3001)"
+      },
+      {
+        "text":"&0Odejdź pwoli do budynku. I pujdz spać.&7",
+        "exec":"say(\"&0 Bestia na szczęście odwraca się i znika w zaroślach leśnych. A ty idziesz spać.&7\")\nnChapter()"
+      },
+      {
+        "text":"Słłyyyszyyyyszsz MNIE? ROZUMIESZ too cooo ja muwwiiię? ",
+        "exec":"d(3002)"
+      }
+    ]
+  },
+  "3001":{
+    "messages":"&0 Bestia odwraca się i znika w zaroślach leśnych.&7",
+    "responses":[
+      {
+        "text":"&0Odejdz spać.&7",
+        "exec":"say(\"&0Powoli nie odwracając się cofasz się do budynku i idziesz spać.&7\")\nnChapter()"
+      }
+    ]
+  },
+  "3002":{
+    "messages":"&0 Bestia nie wzruszona tym co do niej mówiłeś, tak jakby tego nawet nie słyszła odwraca się i znika w zaroślach leśnych.&7",
+    "responses":[
+      {
+        "text":"&0Odejdz spać.&7",
+        "exec":"say(\"&0 Bestia patrzy na ciebie jakby czegoś żądając, ale ty powoli cofasz się. Nie wiesz nawet jak ale udało ci się zamknąć drzwi. Jednak jak popatrzałeś nagórę nie spostrzegłeś Kurta który tam spał, lecz na początku się tym nie przjełes i poszedłeś spać. Dopiero rankiem posklejałeś fakty. Kurt jednak nie jest zwyczjnym paserem, za którego się uważał.&7\")\nVARIBLES[\"trueForm\"] = 1\nnChapter()"
+      }
+    ]
+  }
+}

@@ -10,10 +10,9 @@ import sys
 
 global run
 run = 1
-runRoad = 1
 
 
-chapter = 0
+chapter = 2
 
 global textJson
 textJson = {}
@@ -26,21 +25,29 @@ availableDialogues = {}
 global pleace
 
 global commands
+global allCommands
 global commandsCalls
-global activCommandsCalls
+
+global VARIBLES
+VARIBLES = {}
+VARIBLES = {"trueForm": 1}
 
 ##Loads
 
 def loadCommandCallsList():
+    global allCommands
+    global pleace
+    global commands
+    allCommands = commands.copy()
+    allCommands += pleace.get("commands")
     global commandsCalls
-    global activCommandsCalls
     commandsCalls = {}
-    activCommandsCalls = {}
-    for i in commands:
+    for i in allCommands:
         for ii in i["calls"]:
-            commandsCalls[ii] = i["func"]
-            if(i.get("act")) :
-                activCommandsCalls[ii] = i["func"]
+            if(i.get("exec") != None):
+                commandsCalls[ii] = i.get("exec")
+            else:
+                commandsCalls[ii] = i["func"]
     return(0)
 
 def loadDialoguesJson():
@@ -50,30 +57,41 @@ def loadDialoguesJson():
         dialogueJson.update( J.load(codecs.open('data/dialogues/'+str(x), 'r', 'utf-8-sig')) )
     return(0)
 
-def loadPleace():
+def loadAvailableDialogues():
     global pleace
     global availableDialogues
-    data = J.load(codecs.open('data/pleaces/'+str(chapter)+'.json', 'r', 'utf-8-sig'))
-    pleace = data
-
-    say(data.get("startDes"))
-
-    for i in commands:
-        if(i["name"] in data["commands"] or i["name"] in ["help","exit"]):
-            i["act"] = True
-        else:
-            i["act"] = False
-    availableDialogues = data.get("dialogues")
+    availableDialogues = pleace.get("dialogues")
     if(availableDialogues == None):
         availableDialogues = {}
+    return(0)
+
+def loadPleace():
+    global pleace
+    global VARIBLES
+    data = J.load(codecs.open('data/pleaces/'+str(chapter)+'.json', 'r', 'utf-8-sig'))
+    pleace = data
+    if(pleace.get("exec") != None):
+        exec(pleace.get("exec"))
+    say(data.get("startDes"))
+
+
+    loadAvailableDialogues()
     return(0)
 
 
 
 ##Commands
+def nChapter():
+    global chapter
+    chapter += 1
+    loadDialoguesJson()
+    loadPleace()
+    loadCommandCallsList()
+
 def dialogue(id):
     global run
     global dialogueJson
+    global VARIBLES
     try:
         data = dialogueJson[str(id)]
     except:
@@ -82,28 +100,38 @@ def dialogue(id):
 
     say(data['messages'])
 
-    for i, ii in enumerate(data['responses']):
+    res = []
+
+    for i in data['responses']:
+        if(i.get("if") == None):
+            res.append(i)
+        else:
+            exec("global x\nx = ( {} )".format(i["if"]))
+            if(x):
+                res.append(i)
+
+    for i, ii in enumerate(res):
         say( "{} {}".format(i+1, ii["text"]) )
+
     while(run):
         i = inp()
         try:
             i = int(i)-1
-            if(i >= 0 and len(data['responses']) > i):
-                ##say(data['responses'][i]['text'])
-                if(data['responses'][i].get("com") == None or data['responses'][i]['com'] == "exit"):
-                    say(data['responses'][i]['var'])
+            if(i >= 0 and len(res) > i):
+                try:
+                    d = dialogue
+                    if(res[i].get("exec") != None):
+                        exec(res[i].get("exec"))
+                    else:
+                        WAR("Nie ma ustawionej zmiennej exec")
                     return(0)
-                elif(data['responses'][i]['com'] == "dia"):
-                    dialogue(data['responses'][i]['var'])
-                    return(0)
-                elif(data['responses'][i]['com'] == "sDia"):
-                    availableDialogues[data['responses'][i]['var'][0]] = data['responses'][i]['var'][1]
-                    return(0)
-                else:
-                    say("Nie znana komenda {}".format(data['responses'][i]['com']))
-                    return(0)
+                except:
+                    ERROR("Error 303")
+                    return(1)
+            else:
+                say("Podaj liczbę w przedziale od 1 do {}".format(i, len(res) ) )
         except:
-            say( "{} to nie jest liczba. Podaj liczbę w przedziale od 1 do {}".format(i, len(data['responses']) ) )
+            say( "{} to nie jest liczba. Podaj liczbę w przedziale od 1 do {}".format(i, len(res) ) )
     return(0)
 
 def cTalk(args):
@@ -113,23 +141,20 @@ def cTalk(args):
 
     global availableDialogues
     if(args[1] in availableDialogues):
-        
+
         dialogue(availableDialogues[ str( args[1] ) ])
     else:
         say("Nie ma tutaj kogoś takiego jak \"{}\".".format(args[1]))
     return(0)
 
 def cLook(args):
-    say(des)
+    say(pleace["des"])
     return(0)
 
 def cHelp(args):
-    if(0 == (len(args) > 1 and args[1] == "wszystkie")):
-        say("&0Poniżej wyświetlone komendy są jedynie na tę chwilę możliwymi do wykonania komendami. Jeżeli za to chcesz poznać je wszystki wpisz \"pomoc wszystkie\" w lini poleceń.&7 ")
-    global commands
-    for i in commands:
-        if(i.get("act") or ( len(args) > 1 and args[1] == "wszystkie" )):
-            say( "{}   {}".format(i.get("sample"), i.get("des")) )
+    global allCommands
+    for i in allCommands:
+        say( "{}{}{}".format(i.get("sample"), " &6-&7 ", i.get("des")) )
 
 
     return(0)
@@ -140,18 +165,6 @@ def cExit(args):
 
 
 commands =[
-    {"name":"drink",
-    "calls":["napij","Napij"],
-    "func":None
-    },
-    {"name":"",
-    "calls":[],
-    "func":None
-    },
-    {"name":"",
-    "calls":[],
-    "func":None
-    },
     {"name":"talk",
     "sample":"rozmawiaj &2<&7osoba&2>&7",
     "des":"służy do rozmawiania z kimś",
@@ -164,10 +177,6 @@ commands =[
     "calls":["rozejrzyj","Rozejrzyj"],
     "func":cLook
     },
-    {"name":"",
-    "calls":[],
-    "func":None
-    },
     {"name":"help",
     "sample":"pomoc",
     "des":"pokazuje wszyskie dostępne komendy",
@@ -175,16 +184,16 @@ commands =[
     "func":cHelp
     },
     {"name":"exit",
-    "sample":"wyjdz",
+    "sample":"wyłącz",
     "des":"wyłancza grę bez zapisywania jej",
-    "calls":["wyjdz", "wyjście", "Wyjdz", "Wyjście", "zamknij", "Zamknij", "wyjscie", "Wyjscie"],
+    "calls":["wyłącz", "Wyłącz", "wylacz", "Wylacz", "exit", "Exit"],
     "func":cExit
     }
 ]
 
-commandsCalls = {}
-activCommandsCalls = {}
+allCommands = []
 
+commandsCalls = {}
 ##LOADING Text JSONS
 textJson = J.load(codecs.open('data/text/Pl.json', 'r', 'utf-8-sig'))
 
@@ -199,10 +208,13 @@ while(run):
     co = inp()
     col = co.split()
 
-    if(col[0] in commandsCalls):
-        if(col[0] in activCommandsCalls):
-            commandsCalls[col[0]](col)
+
+    if( len(col) > 0 and col[0] in commandsCalls):
+        if(type(commandsCalls[col[0]]) == str):
+            args = col
+            exec(commandsCalls[col[0]])
         else:
-            say(textJson["noActiveCommandUse"])
+            commandsCalls[col[0]](col)
+
     else:
         say(R.choice(textJson["errorCommandMessageList"]).format(co))

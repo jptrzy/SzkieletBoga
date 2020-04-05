@@ -1,16 +1,215 @@
 {
 
 "2000":{
-  "id":2000,
-  "messages":[
-    "..."
-  ],
+  "messages":"&0Celina powoli odwróciła swoją głowę w twoją stronę oraz szepcząc, aby nie obudzić reszty zapytała się. &7Wszystko dobrz?",
   "responses":[
     {
-      "text":"(Odejdz)",
-      "var" : "Odszedłęś od Celiny"
+      "text":"Tak, a jak tam u ciebie?",
+      "exec":"d(2001)"
+    },
+    {
+      "text":"Tak. &0 Odwracasz się.&7",
+      "exec":"availableDialogues[\"Celina\"] = 2008"
+    }
+  ]
+},
+"2001":{
+  "messages":"&0Uśmiecha się oraz jak najszybciej odpowiada. &7U mnie to dobrze. Jest spokojnie więc jest dobrze. Chociaż jak tak dłużej się zastanowić jest nawet zbyt spokojnie, ale może to my po prostu spłoszayliśmy zwierzęta swoją obecnością. Normalnie było ich pełno, ale to dlatego, że wcześniej byłam tutaj zawsze sama.",
+  "responses":[
+    {
+      "text":"Mieliśmy szczęście, że trafiliśmy na tą chadkę.",
+      "exec":"d(2002)"
+    }
+  ]
+},
+"2002":{
+  "messages":"&0Śmieje się. &7Mówiąc szczerze myślałam, że już dawno spłoneło po ostatnich dwóch pożarach tego lasu. &0Ścisza ton zauważając, że śmiała się zbyt głośno &7Ale jak widać trzyma się.",
+  "responses":[
+    {
+      "text":"A skąd wzieła się taka chata w samym środku Lasu Cieni.",
+      "exec":"d(2003)"
+    }
+  ]
+},
+"2003":{
+  "messages":"&7Blisko stąd przyszłam na świat, a ten domek zbudowałam razem z bratem na początku mojej karier łowcy. Kiedy jeszcze brat żył zaczoł mnie nauczać jak polować, a nie być zwieryną. Więc, aby nie spać tylko pod gołym niebem zbudowaliśmy tą chatę. Po jego odejściu to był mój dom. Dopiero od niedawna osiedliłąm się w mieście.",
+  "responses":[
+    {
+      "text":"Rozumiem",
+      "exec":"d(2004)"
+    },
+    {
+      "text":"A jak zginoł twój brat?",
+      "exec":"d(2005)"
+    }
+  ]
+},
+"2005":{
+  "messages":"&0 Momentalnie blednije po usłyszeniu twych słów jakby sobie coś przypomniała. &7Lepiej nie poruszajmy tego tematu. Nie chciała tobie przerwać spokoju i opowiadać o tym LESIE.",
+  "responses":[
+    {
+      "text":"Rozumiem",
+      "exec":"if(VARIBLES.get(\"sleepBerthold\") == None):\n availableDialogues[\"Berthold\"] = 1004\nd(2004)"
+    }
+  ]
+},
+"2004":{
+  "messages":"Idziesz już spać?",
+  "responses":[
+    {
+      "text":"Tak miałem to zamiar właśnie zrobić.",
+      "exec":"availableDialogues[\"Celina\"] = 2006"
+    },
+    {
+      "text":"Nie jeszczę trochę posiedzę.",
+      "exec":"availableDialogues[\"Celina\"] = 2007"
+    }
+  ]
+},
+"2006":{
+  "messages":"Przypadkiem nie chciałeś pujść spać?",
+  "responses":[
+    {
+      "text":"Tak, właśnie zamieżałem to zrobić.",
+      "exec":""
+    }
+  ]
+},
+"2007":{
+  "messages":"Tak?",
+  "responses":[
+    {
+      "text":"Już nic.",
+      "exec":""
+    }
+  ]
+},
+"2008":{
+  "messages":"Tak?",
+  "responses":[
+    {
+      "text":"Jak tam u ciebie?",
+      "exec":"d(2001)"
+    },
+    {
+      "text":"Nic.",
+      "exec":""
+    }
+  ]
+},
+
+"2020":{
+  "messages":"&0Widzisz jak Celina dokładnie przygląda się śladom besti. Po czym odwraca się w twoją stronę &7W czymś mogę tobie pomuc?",
+  "responses":[
+    {
+      "if":"VARIBLES[\"diaCelina0\"]",
+      "text":"Jak myśli, co mogło zabić najemnika i gdzie mogło pójść?",
+      "exec":"VARIBLES[\"diaCelina0\"] = 0\nd(2022)"
+    },
+    {
+      "if":"VARIBLES[\"diaCelina1\"]",
+      "text":"Co zrobimy teraz z ciałem?",
+      "exec":"VARIBLES[\"diaCelina1\"] = 0\nd(2023)"
+    },
+    {
+      "if":"VARIBLES[\"trueForm\"] and VARIBLES[\"diaCelina2\"]",
+      "text":"Czy wiesz może jak pocieszyć Kurta, bowiem wygląda na rozbitego?",
+      "exec":"VARIBLES[\"diaCelina2\"] = 0\n\navailableDialogues[\"Celina\"]=2021\nVARIBLES[\"diaCelina\"] = 2021\nsay(\"&0Jej wyraz twarzy teraz nie wskazuje jakiego kolwiek zadowolenia. &7Wiesz co muszę wracać do pracy.\")"
+    },
+    {
+      "if":"VARIBLES[\"trueForm\"] and VARIBLES[\"diaCelina3\"]",
+      "text":"Wiesz może co jest nie tak z Kurt, że cały czas siedzi w końcie i nic nie robi.?",
+      "exec":"VARIBLES[\"diaCelina3\"] = 0\nd(2024)"
+    },
+    {
+      "text":"Nic. &0Odejdź&7",
+      "exec":""
+    }
+  ]
+},
+"2021":{
+  "messages":"&0Widzisz jak Celina dokładnie przygląda się śladom besti. Nie wygląda teraz na chętną do jakiej kolwiek rozmowy.",
+  "responses":[
+    {
+      "if":"VARIBLES[\"trueForm\"]",
+      "text":"&0Odejź&7",
+      "exec":""
+    }
+  ]
+},
+"2022":{
+  "messages":"&0Nagle zaczęłą się głęboko zastanawiać po czym powiedziała. &7Byłam pewna, że to niedzwiedz, ale głębokość bruzd na to nie wcale wskazuje. Jeszcze jedno jak to coś tutaj się wogule dostało nie pozostawiając żadnych śladów.",
+  "responses":[
+    {
+      "if":"VARIBLES[\"diaCelina1\"]",
+      "text":"Co zrobimy teraz z ciałem?",
+      "exec":"VARIBLES[\"diaCelina1\"] = 0\nd(2023)"
+    },
+    {
+      "if":"VARIBLES[\"trueForm\"] and VARIBLES[\"diaCelina2\"]",
+      "text":"Czy wiesz może jak pocieszyć Kurta, bowiem wygląda na rozbitego?",
+      "exec":"VARIBLES[\"diaCelina2\"] = 0\n\navailableDialogues[\"Celina\"]=2021\nVARIBLES[\"diaCelina\"] = 2021\nsay(\"&0Jej wyraz twarzy teraz nie wskazuje jakiego kolwiek zadowolenia. &7Wiesz co muszę wracać do pracy.\")"
+    },
+    {
+      "if":"VARIBLES[\"trueForm\"] and VARIBLES[\"diaCelina3\"]",
+      "text":"Wiesz może co jest nie tak z Kurt, że cały czas siedzi w końcie i nic nie robi.?",
+      "exec":"VARIBLES[\"diaCelina2\"] = 0\nVARIBLES[\"diaCelina3\"] = 0\nd(2024)"
+    },
+    {
+      "text":"&0Odejdź&7",
+      "exec":""
+    }
+  ]
+},
+"2023":{
+  "messages":"Trzeba je spalić. Wiem, że Bethold był twojim przyjacielem i chciałbyś go pochować, ale trzeba je spalić aby zapach krwi nie ciągnoł się za nami abyśmy nie stali się następnami celami jeszcze groźniejszych stworzeń.",
+  "responses":[
+    {
+      "if":"VARIBLES[\"diaCelina0\"]",
+      "text":"Jak myśli, co mogło zabić najemnika i gdzie mogło pójść?",
+      "exec":"VARIBLES[\"diaCelina0\"] = 0\nd(2022)"
+    },
+    {
+      "if":"VARIBLES[\"trueForm\"] and VARIBLES[\"diaCelina2\"]",
+      "text":"Czy wiesz może jak pocieszyć Kurta, bowiem wygląda na rozbitego?",
+      "exec":"VARIBLES[\"diaCelina2\"] = 0\nVARIBLES[\"diaCelina3\"] = 0\n\navailableDialogues[\"Celina\"]=2021\nVARIBLES[\"diaCelina\"] = 2021\nsay(\"&0Jej wyraz twarzy teraz nie wskazuje jakiego kolwiek zadowolenia. &7Wiesz co muszę wracać do pracy.\")"
+    },
+    {
+      "if":"VARIBLES[\"trueForm\"] and VARIBLES[\"diaCelina3\"]",
+      "text":"Wiesz może co jest nie tak z Kurt, że cały czas siedzi w końcie i nic nie robi.?",
+      "exec":"VARIBLES[\"diaCelina2\"] = 0\nVARIBLES[\"diaCelina3\"] = 0\nd(2024)"
+    },
+    {
+      "text":"Dobra to ja może pomogę Heinzowi. &0Odejdź&7",
+      "exec":""
+    }
+  ]
+},
+"2024":{
+  "messages":"&0 Milnie patrzy się na ciebie i zcisza ton. &7Wież mi on nie zawsze taki był. Kiedyś był naprawdę dobrym empatycznym chłopakiem, ale teraz jedyne co z niego zostało to chora drażliwość, przerodzona z nienawiści do bycia manipulowanym.",
+  "responses":[
+    {
+      "if":"VARIBLES[\"diaCelina0\"]",
+      "text":"Jak myśli, co mogło zabić najemnika i gdzie mogło pójść?",
+      "exec":"VARIBLES[\"diaCelina0\"] = 0\nd(2022)"
+    },
+    {
+      "if":"VARIBLES[\"diaCelina1\"]",
+      "text":"Co zrobimy teraz z ciałem?",
+      "exec":"VARIBLES[\"diaCelina1\"] = 0\nd(2023)"
+    },
+    {
+      "if":"VARIBLES[\"trueForm\"] and VARIBLES[\"diaCelina2\"]",
+      "text":"Czy wiesz może jak pocieszyć Kurta, bowiem wygląda na rozbitego?",
+      "exec":"VARIBLES[\"diaCelina2\"] = 0\nVARIBLES[\"diaCelina3\"] = 0\n\navailableDialogues[\"Celina\"]=2021\nVARIBLES[\"diaCelina\"] = 2021\nsay(\"&0Jej wyraz twarzy teraz nie wskazuje jakiego kolwiek zadowolenia. &7Wiesz co muszę wracać do pracy.\")"
+    },
+    {
+      "text":"Rozumiem. &0Odejdź&7",
+      "exec":""
     }
   ]
 }
+
+
 
 }

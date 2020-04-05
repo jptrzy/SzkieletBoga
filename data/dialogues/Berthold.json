@@ -3,12 +3,10 @@
   "1000":{
     "messages": "&7Co tam?&0 Pyta się Berthold szybko przy tym kończąc wędząkę.&7",
     "responses":[
-      {"text" : "Najlepeij. Już od dawna nie jadłem tak sytego posiłku.",
-        "com" : "dia",
-        "var" : 1001},
-      {"text" : "&0Odejdz&7",
-        "com" : "exit",
-        "var" : ""}
+      {"text" : "Dobrze. Już od dawna nie jadłem tak sytego posiłku.",
+        "exec":"dialogue(1001)"},
+      {"text" : "&0Nie odpowiadaj&7",
+      "exec":""}
     ]
   },
 
@@ -16,8 +14,7 @@
     "messages":"&0Twój przyjaciel uśmiecha się przy tym przełykając ostatnią wędząnkę. &7Ja takżę. Patrząc na to wszystko, to przez te nieszczęście ostatecznie na razie wychodzimy na plus. &0Jego głos nagle blaknie. &7Gdyby tylko innym udało się tu dotrzeć. Morze miej ich w opiece.",
     "responses":[
       {"text" : "Ale my przynajmniej żyjemy.",
-        "com" : "dia",
-        "var" : 1002}
+        "exec":"dialogue(1002)"}
     ]
   },
 
@@ -25,16 +22,24 @@
     "messages":"&7Dokładnie i przy tym się trzymajmy. &0Berthold wygląda już na zmęczonego tą rozmową i wszystkim. &7Dobra to ja już się kimnę, nie ma co więcej jeść będąc najedzonym.&0Berthold jak powiedział tak zrobił. Podparł głowę zamknoł oczy i automatycznie z zmenczenia zasnoł. &7 ",
     "responses":[
       {"text" : "To ja tobie nie będe przeszkadzać.",
-        "com" : "sDia",
-        "var" : ["Berthold",1003]}
+        "exec": "VARIBLES[\"sleepBerthold\"] = 1\navailableDialogues[\"Berthold\"] = 1003"
+      }
     ]
   },
   "1003":{
     "messages":"&0Berthold zasnoł i teraz śpi.&7",
     "responses":[
       {"text" : "&0Odejdz&7",
-        "com" : "exit",
-        "var" : ""}
+      "exec":""}
+    ]
+  },
+  "1004":{
+    "messages":"&0Berthold ścisza ton tak, aby Celina nie usłyszła. &7Lepiej nie wypytywać ją o śmierć brata to jest trochę kruchy temat. A tak pomijając ten temat jak tam podoba się taka wyżerka.",
+    "responses":[
+      {"text" : "Idealnie. Już od dawna nie jadłem tak sytego posiłku.",
+        "exec":"dialogue(1001)"},
+      {"text" : "&0Nie odpowiadaj&7",
+      "exec":""}
     ]
   }
 

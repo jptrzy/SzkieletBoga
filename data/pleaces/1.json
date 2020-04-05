@@ -1,0 +1,16 @@
+{
+  "exec":"VARIBLES[\"trueForm\"]=0",
+  "startDes":"Tedy, pomimo oponowania Celiny wszyscy urządzili sobie sutą kolację i poszli spać z pełnymi brzuchami i dobrym samopoczóciem. W końcu, przeżyliście, wasze serca nadal biją i właśnie niektórzy z was (w tym ty i Berthold) zjedli najsmaczniejszy i najbardziej sycący posiłek w swym życiu. A jutro… jutro wszyscy będziecie DALEKO stąd. Tak daleko, że nikt was nie wytropi. A po jutrze będziecie już w Jerracie, ty i twój towarzysz będziecie ustatkowani na resztę życia i sprawicie sobie jeszcze bardziej sowitą ucztę niż dzisiaj. Teraz jednak nie czas na rozmyślania. Czas na sen. Cóż, przynajmniej dla niektórych…\nBo tym razem postanowiłeś spróbować znowu. Masz już pewną wprawę, więc udało ci się bez problemu. I oto, po chwili absolutnej czerni stoisz nad swym ciałem, oczyszczająco wręcz lekki i zwiewny. Po drugiej stronie pokoju leży kapłanka i jej uczeń, smacznie śpiąc. Powoli, niespiesznie idziesz w stronę drzwi by dołączyć w warcie do Celiny. Musisz przyznać, że ta dziewczyna jest niesamowita. Sama po intensywnym marszu zjadła jedno jajko i trochę zieleniny, a i tak wzięła na siebie całodobową wartę. Słusznie, bo raczej nikt z was nie byłby w stanie jej trzymać przy zamroczeniu alkocholem.\nNaglę twoje rozmyślania przerywa przerażający widok. Widzisz że drzwi są otwarte na ościerz, a Bertholda nie ma w hacie. Wychodziż z niej i widzis, żę parę metrów od ciebie, tuż nad martwym Bertholdem, z klatką piersiową otwartą na podobieństwo klapy w podłodze, stoi &2potwór&7. Przypomina on kobietę z brunatnymi włoskami i śniadą cerą, ubraną w podartą suknie praczki. Opiera się na czterech łapach (tak, łapach), zakończonymi długimi szponami, wgryzając się we wnętrze tułowia twego przyjaciela. Jej włosy dziwnie falują, jakby znajdowała się pod wodą. Naglę unosi głowę i spogląda na ciebie. PROSTO na ciebie. powoli obraca się w twoją stronę, jakby to monstrum chciało do ciebie podejść. Wszystko to w głuchej, martwej ciszy.\nPrzez chwilę jesteś dosłownie sparaliżowany. Potem jednak strach uderza ci do głowy, zrywając z twoich kończyn pęta, nałożone przez panikę. Co zrobisz?",
+  "des":"NIE MA OPISU",
+  "commands":[
+    {"name":"go",
+      "sample":"odejdź",
+      "des":"pozwala na odejście z tego miejsca i położeniu się znowu spać",
+      "calls":["odejdź","Odejdź","odejdz","Odejdz"],
+      "exec":"say(\"&0 Bestia patrzy na ciebie jakby czegoś żądając, ale ty powoli cofasz się. Nie wiesz nawet jak ale udało ci się zamknąć drzwi. Jednak jak popatrzałeś nagórę nie spostrzegłeś Kurta który tam spał, lecz na początku się tym nie przjełes i poszedłeś spać. Dopiero rankiem posklejałeś fakty. Kurt jednak nie jest zwyczjnym paserem, za którego się uważał.&7\")\nVARIBLES[\"trueForm\"] = 1\nnChapter()"
+      }
+  ],
+  "dialogues":{
+    "potwór":3000
+  }
+}
