@@ -3,11 +3,11 @@
     "messages":"&0Kapłanka oprawia ostatnie modły nad zmarłym.&7",
     "responses":[
       {
-        "text":"Jak myślisz co mogło tak pokiereszować Bertholda?",
+        "text":"Jak myślisz, co mogło tak pokiereszować Bertholda?",
         "exec":"d(4001)"
       },
       {
-        "text":"Czy istoty o talencie magicznym, nawet nieokiełznanym, mogą widzieć duchy ?",
+        "text":"Czy istoty o talencie magicznym, nawet nieokiełznanym, mogą widzieć duchy?",
         "exec":"d(4002)"
       },
       {
@@ -18,10 +18,10 @@
   },
 
   "4001":{
-    "messages":"Nie znam się na tym trzeba było by się dopytać &2Celiny&7. &0Po czym zerka na nią. &7Lecz chyba było to coś magicznego. &0Zastanawia się chwilę po czym kontynułuje. &7W nocy czułam dziwne wahania dzikej magii. Chmm Ciekawe jak dobrze pamiętam &6Kurt&7 chyba miał jakiś problem z swoim magicznym talentem.",
+    "messages":"Nie znam się na tym. Celina na pewno wie więcej.&0 Po czym zerka na nią. &7Możliwe jednak, że było to coś magicznego. Zastanawia się chwilę po czym kontynuuje. W nocy czułam dziwne wahania dzikiej magii. Chmm… jak dobrze pamiętam Kurt chyba miał jakiś problem z swoim dzikim zmysłem magii.",
     "responses":[
       {
-        "text":"Czy istoty o talencie magicznym, nawet nieokiełznanym, mogą widzieć duchy ?",
+        "text":"A czy istoty o talencie, nawet nieokiełznanym, mogą widzieć duchy?",
         "exec":"d(4002)"
       },
       {
@@ -34,12 +34,18 @@
     "messages":"Tak oczywiście, a dla czego pytasz?",
     "responses":[
       {
-        "text":"ERROR",
-        "exec":"d(4004)"
+        "if":"VARIBLES[\"trueForm\"] and VARIBLES[\"kurtPast\"] == 0",
+        "text":"Mam pewną umiejętność wychodzenia duchem z ciała podczas snu i przemiszczania się nim. W czoraj w formie ducha widziałem tą bestię która rozszarpałą Bertholda. I dłużej się zastanawiając kiedy wróciłem Kurta nie było więc możliwe że jest to on. &0 Kładziesz rękę na jej ramieniu.&7 Czy pomożesz mi w jego odczarowaniu.",
+        "exec":"say(\"&0Dłuższy czas się zastanowiła, po czym odpowiada. &7Tak, to odrazu chodzmy do niego.&0Przystajesz na to wychodzicie z budynku i ...&7\")\nsay(\"Alfrida rzuca się na podejrzanego, próbując zabić z zaskoczenia. Niestety dla was obu jednak nie udaje się jej, a paser automatycznie zaczyna się przemieniać, oblekając ciało w smugi magii, formujące się w bestię widzianą przez ciebie tej samej nocy. Jednym sprawnym ciosem powala na ziemię kapłankę i wgryza się w jej gardło. Ty za to próbujesz uciec i zawiadomić resztę, jednakże orientujesz się, że nie jesteś w stanie wydobyć z siebie żadnego dźwięku, nic. Wtedy także zauważa, że nie słyszysz niczego za tobą, żaden dźwięk szarpaniny czy zabijania. Odwraca się akurat, aby zobaczyć skaczącego na ciebie potwora, który powala ciebie na ziemię i tnie ciebie szponami raz po raz, aż trafia w gardło, kończąc twój marny żywot.\")\nsay(\"&0Nie musiało się to tak skończyć spróbuj ponownie.&7\")"
+      },
+      {
+        "if":"VARIBLES[\"trueForm\"] and VARIBLES[\"kurtPast\"]",
+        "text":"Mam pewną umiejętność wychodzenia duchem z ciała podczas snu i przemiszczania się nim. W czoraj w formie ducha widziałem tą bestię która rozszarpałą Bertholda. Słyszałem od Heinza, że ostatni nie miał łatwo w życiu, zostawił rodzinę, ale po tem dopiero zrozumiał swój błąd jeszcze ta sprawa z tym miatem. Może to przez to teraz nie może panować na swoimi mocami. &0 Kładziesz rękę na jej ramieniu.&7 Czy pomożesz mi w jego odczarowaniu.",
+        "exec":"say(\"Dobrze, pomogę tobie, lecz narazie muszę dokończyć modlitwy.\")\navailableDialogues[\"Alfrida\"]=4004\nVARIBLES[\"diaAlfrida\"]=4004\nVARIBLES[\"angryMonster\"]-=1"
       },
       {
         "text":"Pytam jedynie z czystej ciekawości.",
-        "exec":"d(4003)"
+        "exec":"availableDialogues[\"Alfrida\"]=4003\nVARIBLES[\"diaAlfrida\"]=4003\nd(4003)"
       }
     ]
   },
@@ -49,7 +55,17 @@
     "responses":[
       {
         "text":"Nie &0Odejdź&7",
-        "exec":"availableDialogues[\"Alfrida\"]=4003\nVARIBLES[\"diaAlfrida\"]=4003"
+        "exec":""
+      }
+    ]
+  },
+
+  "4004":{
+    "messages":"&0Alfrida modli się, chyba lepiej jej teraz nie przeszkadzać.",
+    "responses":[
+      {
+        "text":"&0Odejdź&7",
+        "exec":""
       }
     ]
   }

@@ -11,7 +11,7 @@
   },
 
   "1001":{
-    "messages":"&0Twój przyjaciel uśmiecha się przy tym przełykając ostatnią wędząnkę. &7Ja takżę. Patrząc na to wszystko, to przez te nieszczęście ostatecznie na razie wychodzimy na plus. &0Jego głos nagle blaknie. &7Gdyby tylko innym udało się tu dotrzeć. Morze miej ich w opiece.",
+    "messages":"&0Twój przyjaciel uśmiecha się, przy tym przełykając ostatnią wędzonkę. &7Ja takżę. Patrząc na to wszystko, to przez te nieszczęście ostatecznie na razie wychodzimy na plus. &0Jego głos nagle blaknie. &7Gdyby tylko innym udało się tu dotrzeć. Bogowie, miejcie ich w opiece.",
     "responses":[
       {"text" : "Ale my przynajmniej żyjemy.",
         "exec":"dialogue(1002)"}
@@ -19,7 +19,7 @@
   },
 
   "1002":{
-    "messages":"&7Dokładnie i przy tym się trzymajmy. &0Berthold wygląda już na zmęczonego tą rozmową i wszystkim. &7Dobra to ja już się kimnę, nie ma co więcej jeść będąc najedzonym.&0Berthold jak powiedział tak zrobił. Podparł głowę zamknoł oczy i automatycznie z zmenczenia zasnoł. &7 ",
+    "messages":"Dokładnie i przy tym się trzymajmy. &0Berthold wygląda już na zmęczonego tą rozmową i wszystkim. &7Dobra to ja już się kimnę, nie ma co więcej jeść będąc najedzonym. &0Berthold jak powiedział tak zrobił. Podparł głowę rękami, zamknął oczy i błyskawicznie ze zmęczenia zasnął. &7",
     "responses":[
       {"text" : "To ja tobie nie będe przeszkadzać.",
         "exec": "VARIBLES[\"sleepBerthold\"] = 1\navailableDialogues[\"Berthold\"] = 1003"
@@ -34,7 +34,7 @@
     ]
   },
   "1004":{
-    "messages":"&0Berthold ścisza ton tak, aby Celina nie usłyszła. &7Lepiej nie wypytywać ją o śmierć brata to jest trochę kruchy temat. A tak pomijając ten temat jak tam podoba się taka wyżerka.",
+    "messages":"&0Berthold ścisza ton tak, aby Celina nie usłyszała. &7Lepiej nie wypytywać ją o śmierć brata, to naprawdę kruchy temat. A tak poza tym, jak tam wyżerka?",
     "responses":[
       {"text" : "Idealnie. Już od dawna nie jadłem tak sytego posiłku.",
         "exec":"dialogue(1001)"},

@@ -10,8 +10,12 @@
         "exec" : "d(6001)"
       },
       {
-        "text" : "",
-        "exec" : "d(6003)"
+        "text":"Czy wszystko jest w porządku z Kurtem, wiesz może jak mu pomuc?",
+        "exec":"d(6004)"
+      },
+      {
+        "text":"Czy mógłbyś przemówić do rozsądku Kurtowi, aby ten pomógł komukolwiek?",
+        "exec":"d(6005)"
       },
       {
         "text" : "Nic. &0Odejdź &7",
@@ -24,7 +28,15 @@
     "responses":[
       {
         "text" : "Tak pytając z ciekawości co robiliście w tamtym mieście.",
-        "exec" : "d(6001)"
+        "exec" : "d(6002)"
+      },
+      {
+        "text":"Czy wszystko jest w porządku z Kurtem, wiesz może jak mu pomóc?",
+        "exec":"d(6004)"
+      },
+      {
+        "text":"Czy mógłbyś przemuwić do rozsądku Kurtowi, aby ten wziął się zaczoł przygotowywać do wymarszu.",
+        "exec":"d(6005)"
       },
       {
         "text" : "Nic. &0Odejdź &7",
@@ -33,8 +45,16 @@
     ]
   },
   "6002":{
-    "messages":"Była tam świątynia w której służyłem. Za to Celina po prostu tam mieszkała tak samo jak Kurt. Gdyby tylko nie ci zwierzo ludzie wszystko było by w normie. &0Spogląda na stos.&7 Wiesz co nie mam teraz zbyt dużo czasu muszę to dokończyć.",
+    "messages":"Była tam świątynia, w której służyłem. Za to Celina po prostu tam mieszkała tak samo jak Kurt. Gdyby tylko nie ci zmiennokształtni wszystko byłoby w normie. &0Spogląda na stos. &7Wiesz co nie mam teraz zbyt dużo czasu. Muszę to dokończyć.",
     "responses":[
+      {
+        "text":"A i jeszcze jedno, czy wszystko jest w porządku z Kurtem, wiesz może jak mu pomóc?",
+        "exec":"d(6004)"
+      },
+      {
+        "text":"A i jeszcze jedno, czy mógłbyś mógłbyś przemówić do rozsądku Kurtowi, aby ten pomógł komukolwiek?",
+        "exec":"d(6005)"
+      },
       {
         "text" : "To ja już nie będę przeszkadzać. &0Odejdź &7",
         "exec" : "availableDialogues[\"Heinz\"]=6003\nVARIBLES[\"diaHeinz\"]=6003"
@@ -42,15 +62,30 @@
     ]
   },
   "6003":{
-    "messages":"&0Kapłan siedzi na stosem. Nie powinienem mu przeszkadzać.",
+    "messages":"&0Kapłan siedzi nad stosem. Nie powinienem mu przeszkadzać.&7",
+    "responses":[
+      {
+        "text" : "&0Odejdź &7",
+        "exec" : ""
+      }
+    ]
+  },
+  "6004":{
+    "messages":"Wiesz co, nie chciałbym wnikać w jego prywatne sprawy. Jak chcesz sam się go zapytaj. &0Spogląda na stos. &7Jeszcze tylko solidna podpałka…",
     "responses":[
       {
         "text" : "&0Odejdź &7",
         "exec" : "availableDialogues[\"Heinz\"]=6003\nVARIBLES[\"diaHeinz\"]=6003"
       }
     ]
+  },
+  "6005":{
+    "messages":"Nie powinienem tego mówić, ale nie wiem co byś zrobił jeżeli bym tego tobie nie powiedział. Lepiej go nie brać do pracy niech odpocznie od zdażeń z dzisiejszej nocy. Przez ostanie lata nie miał najlepszego życia. Zostawił swoją rodzinę oraz przyjacouł w pogoni za majątkiem, a kiedy go zyskał i wszystko się ustabilizowało, zrozumiał co uczynił. W połączeniu z atakiem zwieżoludzi nie nieźle nim to wstrząsneło. Dobra ja już muszę wracać do pracy.",
+    "responses":[
+      {
+        "text" : "Rozumiem &0Odejdź &7",
+        "exec" : "availableDialogues[\"Heinz\"]=6003\nVARIBLES[\"diaHeinz\"]=6003\nVARIBLES[\"kurtPast\"]=1\nVARIBLES[\"angryMonster\"]-=1"
+      }
+    ]
   }
-
-
-
 }

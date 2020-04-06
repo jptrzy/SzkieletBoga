@@ -1,3 +1,83 @@
 {
-  
+  "5000":{
+    "messages":"&0Widzisz Kurta, siedzącego pod jedną ze ścian chaty z opuszczoną głową. &7Czego?",
+    "responses":[
+      {
+        "text":"Jak sądzisz kto za tym stoi?",
+        "exec":"say(\"&0Kurt mówi nie unosząc głowy. &7Nie mam pojęcia. Idź i lepiej pomóż katechecie.\")\nVARIBLES[\"diaKurt\"]=5001\navailableDialogues[\"Kurt\"]=5001"
+      },
+      {
+        "text":"Co się z tobą dzieje?",
+        "exec":"say(\"&0Kurt mówi nie unosząc głowy &7Nic, wszystko w najlepszym porządku. Idź i lepiej pomóż katechecie\")\nVARIBLES[\"diaKurt\"]=5001\navailableDialogues[\"Kurt\"]=5001"
+      },
+      {
+        "text":"Czy mogę tobie jakoś pomóc?",
+        "exec":"d(5002)"
+      },
+      {
+        "text":"Nic &0Odejdz&7",
+        "exec":"say(\"To dobrze. &0Odpowiedział Kurt&7\")"
+      }
+    ]
+  },
+  "5001":{
+    "messages":"Nie słyszałęś co mówiem? Spieprzaj stąd!",
+    "responses":[
+      {
+        "text":"&0Odejdz&7",
+        "exec":"VARIBLES[\"angryMonster\"]+=1"
+      }
+    ]
+  },
+
+  "5002":{
+    "messages":"Lepiej nie, macie lepsze rzeczy do roboty, niż użalanie się nade mną",
+    "responses":[
+      {
+        "text":"&0Usiądź i zaczekaj jakiś czas.&7",
+        "exec":"d(5003)"
+      },
+      {
+        "text":"No, wyduś to z siebie.",
+        "exec":"say(\"Nie słyszałeś co mówiłem? Spieprzaj stąd\")\nVARIBLES[\"diaKurt\"]=5001\navailableDialogues[\"Kurt\"]=5001\nVARIBLES[\"angryMonster\"]+=1"
+      },
+      {
+        "text":"&0Odejdz&7",
+        "exec":""
+      }
+    ]
+  },
+  "5003":{
+    "messages":"&0Naprawdę długo obaj siedzicie w absolutnym milczeniu. Jedynia las stara się jakoś ubarwić zaistniałą między wami ciszę. W pewnym momencie do pasera dochodzi, że wciąż tu jesteś. I nie starasz się nijak na niego wpłynąć. Tedy unosi głowę po raz pierwszy od dawna i pyta cię. &7Dlaczego zostałeś tutaj? Przy mnie?",
+    "responses":[
+      {
+        "if":"VARIBLES[\"kurtPast\"]",
+        "text":"Myślałem, że dobrze będzie dotrzymać ci towarzystwa...",
+        "exec":"say(\"&7Bo wiem, że czujesz się samotny. Wiem, że to brzmi absurdalnie z ust najemnika, ale… myślałem, że dobrze będzie dotrzymać ci towarzystwa&0. &7No…&0 odpowiedział Kurt. &7Przydałoby mi się, po tym jak go kiedyś odmówiłem. Jaki ja byłem głupi…&0 po chwili milczenia mówi dalej &7Szkoda, że nie rozumiałem wtedy wartości innych. Co z tego, że za to zyskałem bogactwo, pozycję, a nawet myślałem że szczęście. Do pioruna. Pieniądze to tylko przedmiot. Pomagają w dojściu do celu, racja, ale nigdy nie są celem samym w sobie. Ale wtedy tego nie wiedziałem. A to inni, ci na których można polegać…&0 zawiesił głos od kaskady emocji jakie w nim pewnie buzowały. &7Są… najpiękniejszym i najwięcej wartym celem, jaki można obrać w życiu. Szczególnie z biegiem czasu…&0 mieszczanin oparł się o ścianę chaty, jakby przed chwilą ciągnął wóz wyładowany głazami. Nie wiedziałeś, że objawienie przed kimś swych emocji może być tak ciężkie. A jednak, na świecie najwyraźniej zostało jeszcze wiele rzeczy, które mogą cię zaskoczyć. Po paru minutach Kurt spogląda na ciebie. &7Wielkie dzięki, Teesle, że pozwoliłeś, abym się przy tobie wygadał, choć ci za to nie płaciłem&0 na jego twarzy pojawia się najszczerszy uśmiech jaki widziałeś do tej pory na jego facjacie. &7Teraz naprawdę możesz iść i pomóc innym. Mnie już niczego nie potrzeba&0 Jego głos jest na tyle szczery, że nie pozostało ci nic innego jak kiwnąć głową na potwierdzenie i wrócić na polanę przed chatką\")\nVARIBLES[\"angryMonster\"]-=2\nVARIBLES[\"diaKurt\"]=5004\navailableDialogues[\"Kurt\"]=5004"
+      },
+      {
+        "text":"Życie nie jest takie złe...",
+        "exec":"say(\"&7Widzisz, wszystko ma swoje dobre zakończenie. Kiedyś też byłem w podobnej sytuacji. Pamiętam, jak musieliśmy uciekać z fortu obleganego przez Wężoludzi….&0 Mieszczanin szybko przerywa tobie i mówi. Nie potrzebuje krasomówcy. &7Spadaj stąd.\")\nVARIBLES[\"angryMonster\"]+=1\nVARIBLES[\"diaKurt\"]=5001\navailableDialogues[\"Kurt\"]=5001"
+      },
+      {
+        "text":"Chciałbym cię pocieszyć...",
+        "exec":"say(\"&7Bo wiesz, chciałbym ci powiedzieć, że wiem, jak się czujesz i na tej bazie cię pocieszyć… ale nie mogę, bo nie wiem jakie emocje tobą targają. Szkoda, bo może wtedy powiedziałbym coś mądrego.&0 Odpowiedział szybko Kurt. A ja na to &7 A tak pomyślałem, że w tym wypadku faktycznie, “słowo będzie srebrem, a milczenie złotem”... ale jeśli nie chcesz, mogę odejść i pomóc reszcie w przygotowaniu stosu dla Bertholda. No…&0 odpowiada naglę Kurt. &7Przydałoby mi się, po tym jak go kiedyś odmówiłem. Jaki ja byłem głupi…&0 po chwili milczenia spogląda w twoją stronę i mówi &7Usiądź. Nikt ci nie każe przecież stać. &0Kiedy wykonujesz polecenie paser kontynuuje. &7Naprawdę szkoda, że nie rozumiałem wtedy wartości innych. Co z tego, że za to zyskałem bogactwo, pozycję, a nawet myślałem że szczęście. Do pioruna. Pieniądze to tylko przedmiont. Pomagają w dojściu do celu, racja, ale nigdy nie są celem samym w sobie. Ale wtedy tego nie wiedziałem. A to inni, ci na których można polegać…&0 zawiesił głos od kaskady emocji jakie w nim pewnie buzowały. &7Są… najpiękniejszym i najwięcej wartym celem, jaki można obrać w życiu. Szczególnie z biegiem czasu…&0 Mieszczanin oparł się o ścianę chaty, jakby przed chwilą ciągnął wóz wyładowany głazami.&7 Nie wiedziałeś, że objawienie przed kimś swych emocji może być tak ciężkie. A jednak, na świecie najwyraźniej zostało jeszcze wiele rzeczy, które mogą cię zaskoczyć. &0Opowiedziałem. Po paru minutach Kurt spogląda na ciebie. &7Wielkie dzięki, Teesle, że pozwoliłeś, abym się przy tobie wygadał, choć ci za to nie płaciłem.&0 Na jego twarzy pojawia się najszczerszy uśmiech jaki widziałeś do tej pory na jego facjacie. &7Teraz naprawdę możesz iść i pomóc innym. Mnie już niczego nie potrzeba&0 Jego głos jest na tyle szczery, że nie pozostało ci nic innego jak kiwnąć głową na potwierdzenie i wrócić na polanę przed chatką.\")\nVARIBLES[\"angryMonster\"]+=1\nVARIBLES[\"diaKurt\"]=5004\navailableDialogues[\"Kurt\"]=5004"
+      },
+      {
+        "text":"Mam dla ciebie pewną propozycję...",
+        "exec":"say(\"&7Słuchaj, potrzebujemy się. Ja ciebie, a ty mnie. Los nas splótł nierozerwalnie. Zauważyłem, jak Celina na ciebie zareagowała. Nie wiem, co sobie zrobiliście, ale wyraźnie widać, że jedno z was nadepnęło drugiemu na odcisk. Tedy mam propozycję. Ty weźmiesz się w garść i pomożesz nam ogarnąć ten bajzel, a ja ochronię cię nie tylko przed czymś, co zabiło Bertholda i dzikimi zwierzętami, ale także przed łowczynią. Co ty na to?&0 A on na to. &7Wiesz co spieprzaj na zbity ryj.\")\nVARIBLES[\"angryMonster\"]-=2\nVARIBLES[\"diaKurt\"]=5001\navailableDialogues[\"Kurt\"]=5001"
+      }
+    ]
+  },
+  "5004":{
+    "messages":"&0Lepeij zostawić Kurta pomogłem jemu wystarczająco.",
+    "responses":[
+      {
+        "text":"&0Odejdz&7",
+        "exec":""
+      }
+    ]
+  }
+
+
 }

@@ -43,7 +43,7 @@ def _get_terminal_size_windows():
 
 def say(x):
     columns,_  = _get_terminal_size_windows()
-    columns -= 5
+    columns -= 2
     x = x.split("\n")
     for xx in x:
         data = xx.split()

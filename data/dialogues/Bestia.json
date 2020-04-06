@@ -8,7 +8,7 @@
       },
       {
         "text":"&0Odejdź pwoli do budynku. I pujdz spać.&7",
-        "exec":"say(\"&0 Bestia na szczęście odwraca się i znika w zaroślach leśnych. A ty idziesz spać.&7\")\nnChapter()"
+        "exec":"say(\"&0 Bestia patrzy na ciebie jakby czegoś żądając, ale ty powoli cofasz się. Nie wiesz nawet jak ale udało ci się zamknąć drzwi. Jednak jak popatrzałeś nagórę nie spostrzegłeś Kurta który tam spał, lecz na początku się tym nie przjełes i poszedłeś spać. Dopiero rankiem posklejałeś fakty. Kurt jednak nie jest zwyczjnym paserem, za którego się uważał.&7\")\nVARIBLES[\"trueForm\"] = 1\nnChapter()"
       },
       {
         "text":"Słłyyyszyyyyszsz MNIE? ROZUMIESZ too cooo ja muwwiiię? ",
@@ -26,11 +26,26 @@
     ]
   },
   "3002":{
-    "messages":"&0 Bestia nie wzruszona tym co do niej mówiłeś, tak jakby tego nawet nie słyszła odwraca się i znika w zaroślach leśnych.&7",
+    "messages":"&0 Bestia chyba wkurzona tym, że śmiałeś się do niej odezwać, odwraca się i znika w zaroślach leśnych.&7",
     "responses":[
       {
         "text":"&0Odejdz spać.&7",
-        "exec":"say(\"&0 Bestia patrzy na ciebie jakby czegoś żądając, ale ty powoli cofasz się. Nie wiesz nawet jak ale udało ci się zamknąć drzwi. Jednak jak popatrzałeś nagórę nie spostrzegłeś Kurta który tam spał, lecz na początku się tym nie przjełes i poszedłeś spać. Dopiero rankiem posklejałeś fakty. Kurt jednak nie jest zwyczjnym paserem, za którego się uważał.&7\")\nVARIBLES[\"trueForm\"] = 1\nnChapter()"
+        "exec":"say(\"&0Powoli nie odwracając się cofasz się do budynku i idziesz spać.&7\")\nVARIBLES[\"angryMonster\"]+=1\nnChapter()"
+      }
+    ]
+  },
+
+
+  "05092020":{
+    "messages":"Przez chwilę jesteś dosłownie sparaliżowany. Potem jednak strach uderza ci do głowy, zrywając z twoich kończyn pęta, nałożone przez panikę. Co robisz:",
+    "responses":[
+      {
+        "text":"&0Uciekasz na górę, mając nadzieję, że stwór straci tobą zainteresowanie.&7",
+        "exec":"say(\"Potwór nie jest tobą zainteresowany, tedy udaje ci się bez przeszkód wrócić do twego ciała.\")\nsay(\"\")\nnChapter()"
+      },
+      {
+        "text":"&0Trzymasz strach na wodzy i się nie ruszasz. Przecież jesteś niematerialny. Co ci niby może zrobić ta pokraka?&7",
+        "exec":"say(\"Bestia wraca do pożerania zwłok Bertholda. Postanawiasz zostać na wypadek gdyby bestia chciała pożreć następnych. kiedy zbliża się świt odchodzi ona do pustego posłania Kurta, mości się na nim… i zmienia w mieszczanina. Cóż, teraz przynajmniej wiesz kto jest sprawcą przyszłego zamieszania. Teraz możesz spokojnie wrócić do swego ciała.\")\nsay(\"\")\nVARIBLES[\"angryMonster\"]+=1\nnChapter()"
       }
     ]
   }
